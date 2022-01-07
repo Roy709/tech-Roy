@@ -1,30 +1,55 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class="main">
+    <div class="nav">
+      <Nav v-if='this.$route.path !== "/login" && this.$route.path !== "/register"' />
+    </div>
+    <router-view />
   </div>
-  <router-view/>
 </template>
 
+<script>
+import { onBeforeMount } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import firebase from "firebase/compat/app";
+require("firebase/compat/auth");
+import Nav from "./views/Nav.vue";
+
+export default {
+  components: {
+    Nav,
+  },
+  setup() {
+    const router = useRouter();
+    const route = useRoute();
+
+    onBeforeMount(() => {
+      firebase.auth().onAuthStateChanged((user) => {
+        if (!user) {
+          router.replace("/login");
+        } else if (route.path == "/login" || route.path == "/register") {
+          router.replace("/");
+        }
+      });
+    });
+  },
+};
+</script>
+
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+* {
+  margin: 0;
+  padding: 0;
 }
-
-#nav {
-  padding: 30px;
+body {
+  background-image: url(https://images.unsplash.com/photo-1553095066-5014bc7b7f2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8d2FsbCUyMGJhY2tncm91bmR8ZW58MHx8MHx8&w=1000&q=80);
+  background-size: cover;
+  color: white;
 }
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
 }
 </style>

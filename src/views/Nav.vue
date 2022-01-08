@@ -20,9 +20,7 @@
     <div id="button">
       <ul>
         <li>
-          <button class="style2">
-            <router-link to="/login">Login</router-link>
-          </button>
+          <button class="style2" @click="logout">Logout</button>
         </li>
         &nbsp;&nbsp;
         <li>
@@ -36,7 +34,25 @@
 </template>
 
 <script>
-export default {};
+import firebase from "firebase/compat/app";
+require("firebase/compat/auth");
+export default {
+setup(){
+
+  const logout = () => {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => console.log("Sign Out"))
+        .catch((err) => alert(err.message));
+    };
+    return{
+      logout,
+    };
+}
+
+
+};
 </script>
 
 <style scoped>
@@ -73,15 +89,23 @@ a {
   background: #ef4136;
   border:1px solid #ef4136;
 }
+#button{
+  margin-right: 8px;
+}
 .style2 a {
   color: white;
   padding: 8px 20px 8px 20px;
+  /* padding-ri: 10px; */
 }
 button a:hover {
   color:#ef4136 ;
 }
 button {
   border-style: none;
+  color: white;
+}
+button:hover{
+  color:#ef4136 ;
 }
 .style2 {
   outline: none;

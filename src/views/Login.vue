@@ -75,6 +75,7 @@ export default {
   border-radius: 40px;
   /* color: black; */
   background-color: rgba(0, 0, 0, 0.479);
+  color: white;
 }
 .input {
   display: flex;
@@ -82,6 +83,9 @@ export default {
   justify-content: space-around;
   align-items: center;
   height: 100px;
+}
+.button{
+  margin-top: 15px;
 }
 .button input{
     outline: none;
@@ -92,8 +96,7 @@ export default {
   border-radius: 8px;
   margin-top:10px;
   color: white;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
-  ;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .button input:hover{
     background-color: white;

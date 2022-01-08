@@ -16,7 +16,7 @@
         v-model="email"
       />
       </div>
-      <dsiv>
+      <div>
       Enter Your Password :
       <input
         type="password"
@@ -95,6 +95,8 @@ export default {
   border-radius: 40px;
   /* color: black; */
   background-color: rgba(0, 0, 0, 0.479);
+  color: white;
+
 }
 .input {
   display: flex;
@@ -102,6 +104,9 @@ export default {
   justify-content: space-around;
   align-items: center;
   height: 100px;
+}
+.button{
+  margin-top: 15px;
 }
 .button input{
     outline: none;

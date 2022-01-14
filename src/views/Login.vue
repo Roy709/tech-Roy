@@ -108,6 +108,14 @@ input{
     border-style:none;
     padding: 5px;
     margin: 8px;
+    /* border-radius: 6px;
+    
+    
+    
+    
+    
+    
+    */
 
 }
 a{

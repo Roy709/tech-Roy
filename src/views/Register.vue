@@ -55,7 +55,7 @@ export default {
         .auth()
         .createUserWithEmailAndPassword(email.value, password.value)
         .then((user) => alert(user))
-        .catch(() => alert("Enter Valid Data"));
+        .catch((err) => alert("Enter Valid Data"));
 
       if (password1.value === password2.value) {
         password.value = password2.value;

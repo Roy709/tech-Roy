@@ -84,6 +84,7 @@ export default {
 }
 img {
   width: 400px;
+  
 }
 
 .heading h1 {
